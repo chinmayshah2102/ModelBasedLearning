@@ -7,17 +7,21 @@ import matplotlib.pyplot as plt
 import gym
 
 
+#Importing training data and label
 training_data = np.zeros([4,20000])
-training_data[0:3,:] = np.load("Train_data1.npy")
-training_data[3,:] = np.load("Train_action1.npy")
+training_data[0:3,:] = np.load("Train_data.npy")
+training_data[3,:] = np.load("Train_action.npy")
 training_label = np.zeros([3,20000])
-training_label = np.load("Train_label1.npy")
+training_label = np.load("Train_label.npy")
 
 training_data = torch.from_numpy(training_data).float()
 training_label = torch.from_numpy(training_label).float()
 
+#Defining model architecture
 model = nn.Sequential(
            nn.Linear(4,128),
+           nn.ReLU(),
+           nn.Linear(128,128),
            nn.ReLU(),
            nn.Linear(128,3))
 loss_fn = nn.MSELoss()
@@ -27,6 +31,7 @@ learning_rate = 1e-4
 optimizer = optim.Adam(model.parameters(), learning_rate)
 loss_train = np.zeros(20000)
 
+#Updating model weights using Online learning
 for i in range(20000):
     pred_label = model(training_data[:,i])
     loss = loss_fn(pred_label,training_label[:,i])
@@ -39,7 +44,8 @@ for i in range(20000):
 mean_loss_train = np.mean(loss_train)
 print("mean_loss_train:",mean_loss_train)
 print("Last_loss:",loss_train[-1])
-    
+
+#Testing on test data    
 test_data = np.zeros([4,5000])
 test_data[0:3,:] = np.load("Test_data1.npy")
 test_data[3,:] = np.load("Test_action1.npy")
@@ -67,4 +73,5 @@ plt.show()
 mean_loss_test = np.mean(loss_test)
 print("mean_loss_test:",mean_loss_test)
 
+#savinf weights for further use
 torch.save(model.state_dict(), "pendulum_weights.pt")
