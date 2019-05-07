@@ -12,12 +12,14 @@ def edgeCost(action):
     return np.abs(action)
      
 def heuristic(curr_theta, curr_thetadot, action):
-    heuristic_cost = (pow(curr_theta,2)+0.1*pow(curr_thetadot,2)+0.001*pow(action,2))   
+    heuristic_cost = (pow(curr_theta,2)+0.1*pow(curr_thetadot,2))   
     return heuristic_cost
   
 #Defining model architecture to load weights
 model = nn.Sequential(
            nn.Linear(4,128),
+           nn.ReLU(),
+           nn.Linear(128,128),
            nn.ReLU(),
            nn.Linear(128,3))
 
@@ -32,7 +34,7 @@ actions = np.linspace(-2,2,num=10)
 bins={}
 
 for i in range(99):    
-    bins[i] = float('inf')
+    bins[i] = 0
 
 #Running a loop for planning in discretized space (here n indicated state space discretized resolution)
 for i in range(99):
@@ -106,7 +108,7 @@ for i in range(99):
             
             #Retrace the path backward using parent nodes
             path = [currState]
-            for currState in ParentNode:
+            while currState in ParentNode:
                 currState = ParentNode[currState]
                 path.append(currState)
             path.reverse()
@@ -161,13 +163,14 @@ for i in range(99):
         OList.remove(currState)
         CList.add(currState)
         
-lists = sorted(bins.items()) # sorted by key, return a list of tuples
+# sorted by key, return a list of tuples
+lists = sorted(bins.items()) 
 
-x, y = zip(*lists) # unpack a list of pairs into two tuples
+# unpack a list of pairs into two tuples
+discrete_resolution, number_of_steps = zip(*lists) 
 
-plt.plot(x, y)
+plt.plot(discrete_resolution, number_of_steps)
 plt.xlabel('Discretization Resolution')
 plt.ylabel('Number of steps to goal')
 plt.title('For number of actions : 10')
-plt.savefig('BinsVsSteps.png')
 plt.show()
