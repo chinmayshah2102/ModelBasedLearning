@@ -11,3 +11,7 @@ The graph of discretization resolution for state space vs number of steps to rea
 Astar Plannning Action space discretization
 The algorithm compares the discretization resolution of action space vs number of steps taken by the pendulum to reach the goal state (zero degree vertical).
 
+The graph of discretization resolution for action space vs number of steps to reach the goal state obtained was:
+![ActionBinsVsSteps](https://user-images.githubusercontent.com/38117206/57319769-5c41d100-70cb-11e9-9cdb-d01be2f37ea6.png)
+
+
