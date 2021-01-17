@@ -1,17 +1,17 @@
 This Project implements Model based learning for pendulum environment in OpenAI gym.
-First a data set is generated to learn the dynamics of the system and then neural network architecture is designed to learn the unknown dynamics of the environment using the data-set.
-Finally an Astar planning algorithm is implemented on this environment. The state and action space for the problem are continuous. One of the methods for solving the problem is discretizing the state and action space. The problem statement here is to understand the effects of this discretization resolution with the complexity of planning. 
+-> First a data set is generated based on the unknown dynamics of the system.
+-> Then a neural network is designed to learn this unknown dynamics of the environment using the dataset.
+-> Finally an Astar planning algorithm is implemented to search a sequence of state -> action -> state to make the pendulum stand upright.
+-> The state and action space for this problem is a continuous space. One of the methods for solving the problem is discretizing the state and action space.
 
-Astar Planning State space discretization
-The algorithm compares the discretization resolution of state space vs number of steps taken by the pendulum to reach the goal state (zero degree vertical).
+The problem statement here is to understand the effects of discretization resolution with the complexity of planning. 
 
-The graph of discretization resolution for state space vs number of steps to reach the goal state obtained was:
+State space discretization:
+The graph below shows the number of steps taken by the pendulum to reach the goal state (zero degree vertical) for different values of the discretization resolution of state space.
 ![BinsVsSteps](https://user-images.githubusercontent.com/38117206/57319247-25b78680-70ca-11e9-8a57-2dda5cd4cf38.png)
 
-Astar Plannning Action space discretization
-The algorithm compares the discretization resolution of action space vs number of steps taken by the pendulum to reach the goal state (zero degree vertical).
-
-The graph of discretization resolution for action space vs number of steps to reach the goal state obtained was:
+Action space discretization:
+The graph below shows the number of steps taken by the pendulum to reach the goal state (zero degree vertical) for different values of the discretization resolution of action space.
 ![ActionBinsVsSteps](https://user-images.githubusercontent.com/38117206/57319769-5c41d100-70cb-11e9-9cdb-d01be2f37ea6.png)
 
 
