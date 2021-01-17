@@ -1,7 +1,11 @@
 This Project implements Model based learning for pendulum environment in OpenAI gym.
+
 -> First a data set is generated based on the unknown dynamics of the system.
+
 -> Then a neural network is designed to learn this unknown dynamics of the environment using the dataset.
+
 -> Finally an Astar planning algorithm is implemented to search a sequence of state -> action -> state to make the pendulum stand upright.
+
 -> The state and action space for this problem is a continuous space. One of the methods for solving the problem is discretizing the state and action space.
 
 The problem statement here is to understand the effects of discretization resolution with the complexity of planning. 
