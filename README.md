@@ -8,11 +8,11 @@ This Project implements Model based learning for pendulum environment in OpenAI 
 The problem statement here is to understand the effects of discretization resolution with the complexity of planning. 
 
 State space discretization:
-The graph below shows the number of steps taken by the pendulum to reach the goal state (zero degree vertical) for different values of the discretization resolution of state space.
+The graph below shows the number of steps taken by the pendulum to reach the goal state (zero degree vertical) for different values of the discretization resolution of state space.  
 ![BinsVsSteps](https://user-images.githubusercontent.com/38117206/57319247-25b78680-70ca-11e9-8a57-2dda5cd4cf38.png)
 
 Action space discretization:
-The graph below shows the number of steps taken by the pendulum to reach the goal state (zero degree vertical) for different values of the discretization resolution of action space.
+The graph below shows the number of steps taken by the pendulum to reach the goal state (zero degree vertical) for different values of the discretization resolution of action space.  
 ![ActionBinsVsSteps](https://user-images.githubusercontent.com/38117206/57319769-5c41d100-70cb-11e9-9cdb-d01be2f37ea6.png)
 
 
